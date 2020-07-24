@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "scratch-notifier-ws",
+  "version": "1.0.0",
+  "description": "A WebSocket-Powered Application Used to Manage Scratch Notification Counts",
+  "main": "server/dist/index.js",
+  "repository": {
+    "url": "https://github.com/SuperC03/scratch-notifier-ws.git"
+  },
+  "author": "SuperC <clarkbros3@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    
+  }
+}
