@@ -1,2 +1,10 @@
+#VSCode
+.vscode/
+
 # Dependencies
 node_modules/
+
+# Server Build
+server/dist/
+# Client Build
+client/dist/
