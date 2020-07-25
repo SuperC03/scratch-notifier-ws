@@ -1,5 +1,6 @@
 import UIkit from 'uikit';
 import Icons from 'uikit/dist/js/uikit-icons';
+import './uikit.scss';
 
 import { ERequestCode } from '../../common';
 

@@ -1,8 +1,8 @@
 const path = require('path');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const WorkboxPlugin = require('workbox-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
 
 module.exports = {
   mode: 'development',
@@ -17,12 +17,29 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.scss/,
+        use: [
+          // 'style-loader',
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require("sass")
+            }
+          }
+        ],
+      },
     ],
   },
   resolve: {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   plugins: [
+    new MiniCssExtractPlugin({
+      filename: "[name].[hash].css",
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       xhtml: true,

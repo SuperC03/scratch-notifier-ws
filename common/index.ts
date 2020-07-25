@@ -1,1 +1,1 @@
-export * from './code.enum';
+export * from './code';
