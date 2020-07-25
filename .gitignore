@@ -6,5 +6,10 @@ node_modules/
 
 # Server Build
 server/dist/
+# Common Build
+common/dist/
 # Client Build
 client/dist/
+
+# Errors
+yarn-error.log

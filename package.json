@@ -12,7 +12,7 @@
   "scripts": {
     "dev:server": "cd ./server && ts-node-dev ./src",
     "dev:client": "cd ./client && webpack-dev-server --config webpack.development.js",
-    "build:server": "cd ./server && tsc",
+    "build:server": "cd ./server && tsc -b",
     "build:client": "cd ./client && webpack --config webpack.production.js"
   },
   "dependencies": {
