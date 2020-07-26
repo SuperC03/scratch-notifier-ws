@@ -11,7 +11,7 @@ InputService.deleteUsername('SuperC_03', name => console.log(name));
 UIkit.use(Icons);
 
 // Init WebSocket
-const socket = new WebSocket(`ws://${SERVER_URL}/ws`);
+const socket = new WebSocket(`${SERVER_URL}/ws`);
 socket.onopen = () => {
   console.log('Connection Established :)');
 }

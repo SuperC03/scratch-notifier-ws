@@ -39,7 +39,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      SERVER_URL: JSON.stringify('localhost:8080'),
+      SERVER_URL: JSON.stringify('ws://localhost:8080'),
     }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css",
