@@ -11,7 +11,7 @@
   "license": "MIT",
   "scripts": {
     "dev:server": "cd ./server && ts-node-dev ./src",
-    "dev:client": "cd ./client && webpack-dev-server --config webpack.development.js",
+    "dev:client": "cd ./client && webpack-dev-server --config webpack.development.js --port 8081",
     "build:server": "cd ./server && tsc -b",
     "build:client": "cd ./client && webpack --config webpack.production.js",
     "start": "node ./server/dist/index.js"
@@ -31,6 +31,7 @@
     "@types/express-ws": "^3.0.0",
     "@types/node": "^14.0.26",
     "@types/uikit": "^3.3.1",
+    "@types/ws": "^7.2.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.6.0",
     "html-webpack-plugin": "^4.3.0",
@@ -39,7 +40,6 @@
     "purgecss-webpack-plugin": "^2.3.0",
     "sass": "^1.26.10",
     "sass-loader": "^9.0.2",
-    "style-loader": "^1.2.1",
     "ts-loader": "^8.0.1",
     "ts-node-dev": "^1.0.0-pre.56",
     "typescript": "^3.9.7",

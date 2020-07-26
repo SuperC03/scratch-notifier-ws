@@ -6,6 +6,18 @@
   <title>Scratch Notifier</title>
 </head>
 <body>
-  
+  <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-center">
+      <a href="#" class="uk-navbar-item uk-logo">Scratch Notifier</a>
+    </div>
+  </nav>
+  <main class="uk-flex uk-flex-center uk-flex-around@m uk-padding uk-flex-wrap uk-text-center" id="cards">
+    <article id="addCard" class="uk-card uk-card-default uk-width-large uk-margin uk-padding uk-flex uk-flex-column uk-flex-middle uk-flex-center">
+      <div class="uk-card-body">
+        <button uk-icon="icon: plus-circle; ratio: 3" uk-tooltip="Add User"></button>
+      </div>
+    </article>
+  </main>
+  <button id="addCards">Add Card</button>
 </body>
 </html>

@@ -1,6 +1,7 @@
 const path = require('path');
 const glob = require('glob')
 
+const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const WorkboxPlugin = require('workbox-webpack-plugin');
@@ -37,7 +38,6 @@ module.exports = {
       {
         test: /\.scss/,
         use: [
-          // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
           {
@@ -54,6 +54,9 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      SERVER_URL: JSON.stringify(process.env.SERVER_URL),
+    }),
     new HtmlWebpackPlugin({
       template: './src/index.html',
       xhtml: true,

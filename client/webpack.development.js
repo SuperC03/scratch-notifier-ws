@@ -1,7 +1,9 @@
 const path = require('path');
 
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { json } = require('express');
 
 
 module.exports = {
@@ -20,7 +22,6 @@ module.exports = {
       {
         test: /\.scss/,
         use: [
-          // 'style-loader',
           MiniCssExtractPlugin.loader,
           'css-loader',
           {
@@ -37,6 +38,9 @@ module.exports = {
     extensions: [ '.tsx', '.ts', '.js' ],
   },
   plugins: [
+    new webpack.DefinePlugin({
+      SERVER_URL: JSON.stringify('localhost:8080'),
+    }),
     new MiniCssExtractPlugin({
       filename: "[name].[hash].css",
     }),

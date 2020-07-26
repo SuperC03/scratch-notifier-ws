@@ -2,3 +2,15 @@
 @import "uikit/src/scss/variables-theme.scss";
 @import "uikit/src/scss/mixins-theme.scss";
 @import "uikit/src/scss/uikit-theme.scss";
+
+nav {
+  background: linear-gradient(to left, #28a5f5, #1e87f0) !important;
+}
+
+.uk-logo {
+  color: rgba(255,255,255,0.8) !important;
+}
+
+.uk-margin {
+  margin-top: 20px !important;
+}

@@ -22,7 +22,7 @@ export type TRequest =
   | { code: ERequestCode.DeleteNotifier, username: string };
 
 export type TResponse =
-  | { code: EResponseCode.CreateNotifier, username: string, image: string }
+  | { code: EResponseCode.CreateNotifier, username: string, count: number }
   | { code: EResponseCode.CreateFailure, username: string, msg: string }
   | { code: EResponseCode.UpdateNotifier, username: string, count: number }
   | { code: EResponseCode.UpdateFailure, username: string, msg: string }

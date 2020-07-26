@@ -13,3 +13,6 @@ client/dist/
 
 # Errors
 yarn-error.log
+
+# Environmental Variables
+.env
