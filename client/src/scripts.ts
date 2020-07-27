@@ -4,16 +4,20 @@ import './uikit.scss';
 
 import CardService from './services/card.service';
 import InputService from './services/input.service';
-InputService.deleteUsername('SuperC_03', name => console.log(name));
+import SocketService from './services/socket.service';
 
 // Initialize UI-Kit
 //@ts-ignore
 UIkit.use(Icons);
 
+// SocketController to be Used
+export let socketService: SocketService;
+
 // Init WebSocket
 const socket = new WebSocket(`${SERVER_URL}/ws`);
 socket.onopen = () => {
-  console.log('Connection Established :)');
+  socket.send("My Body is Ready")
+  socketService = new SocketService(socket);
 }
 socket.onerror = () => {
   UIkit.notification({
@@ -22,3 +26,8 @@ socket.onerror = () => {
     timeout: 20000,
   });
 }
+
+// Setup Add Card Button
+document.getElementById('addCard').addEventListener('click', () => InputService.getUsername((username: string) => {
+  socketService.createNotifier(username);
+}));

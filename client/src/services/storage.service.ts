@@ -12,17 +12,17 @@ class StorageService {
     }
   }
   
-  static editUsername(username: string): void {
+  static editUsername(oldUsername: string, newUsername: string): void {
     const data = window.localStorage.getItem('v1');
     if(!data) {
-      window.localStorage.setItem('v1', JSON.stringify([ username ]));
+      window.localStorage.setItem('v1', JSON.stringify([ newUsername ]));
     } else {
       let names: Array<string> = JSON.parse(data);
-      const index = names.indexOf(username);
+      const index = names.indexOf(oldUsername);
       if(index != -1) {
-        names[index] = username;
+        names[index] = newUsername;
       } else {
-        names.push(username);
+        names.push(newUsername);
       }
       window.localStorage.setItem('v1', JSON.stringify(names));
     }

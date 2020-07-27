@@ -1,10 +1,16 @@
+import UIKit, { UIkit } from 'uikit';
+
 import { ERequestCode, EResponseCode, TRequest, TResponse } from '../../../common/';
+
+import CardService from './card.service';
+import StorageService from './storage.service';
 
 class SocketService {
   private socket: WebSocket;
 
   constructor(_socket: WebSocket) {
     this.socket = _socket;
+    this.handleResponse();
   }
 
   createNotifier(username: string): void {
@@ -31,13 +37,64 @@ class SocketService {
     this.socket.send(JSON.stringify(data));
   }
 
-  handleResponse(): void {
+  private handleResponse(): void {
     // @ts-ignore
-    this.socket.onmessage((data: TResponse) => {
-      switch (data.code) {
+    this.socket.onmessage = ({ data }) => {
+      const res: TResponse = JSON.parse(data);
+      console.log(res);
+      switch (res.code) {
         case EResponseCode.CreateNotifier:
-          
+          CardService.updateCard(res.username, res.count);
+          StorageService.addUsername(res.username);
+          break;
+        case EResponseCode.CreateFailure:
+          UIkit.notification({
+            status: 'danger',
+            message: res.msg
+          });
+          StorageService.removeUsername(res.username);
+          break;
+        case EResponseCode.UpdateNotifier:
+          CardService.updateCard(res.username, res.count);
+          StorageService.addUsername(res.username);
+          break;
+        case EResponseCode.UpdateFailure:
+          UIkit.notification({
+            status: 'danger',
+            message: res.msg
+          });
+          CardService.deleteCard(res.username);
+          StorageService.removeUsername(res.username);
+          break;
+        case EResponseCode.EditNotifier:
+          CardService.deleteCard(res.oldUsername);
+          CardService.updateCard(res.newUsername, res.count);
+          StorageService.editUsername(res.oldUsername, res.newUsername);
+          break;
+        case EResponseCode.EditFailure:
+          UIkit.notification({
+            status: 'danger',
+            message: res.msg
+          });
+          break;
+        case EResponseCode.DeleteNotifier:
+          CardService.deleteCard(res.username);
+          StorageService.removeUsername(res.username);
+          break;
+        case EResponseCode.DeleteFailure:
+          UIkit.notification({
+            status: 'danger',
+            message: res.msg
+          });
+          break;
+        default:
+          UIkit.notification({
+            status: 'danger',
+            message: 'I have no idea what\'s happening? Refresh Maybe ¯\_(ツ)_/¯'
+          });
       }
-    });
+    };
   }
 }
+
+export default SocketService;

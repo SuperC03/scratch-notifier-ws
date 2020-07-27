@@ -12,6 +12,8 @@ export enum EResponseCode {
   CreateFailure,
   UpdateNotifier,
   UpdateFailure,
+  EditNotifier,
+  EditFailure,
   DeleteNotifier,
   DeleteFailure,
 };
@@ -26,5 +28,7 @@ export type TResponse =
   | { code: EResponseCode.CreateFailure, username: string, msg: string }
   | { code: EResponseCode.UpdateNotifier, username: string, count: number }
   | { code: EResponseCode.UpdateFailure, username: string, msg: string }
+  | { code: EResponseCode.EditNotifier, oldUsername: string, newUsername: string, count: number }
+  | { code: EResponseCode.EditFailure, username: string, msg: string }
   | { code: EResponseCode.DeleteNotifier, username: string }
   | { code: EResponseCode.DeleteFailure, username: string, msg: string };

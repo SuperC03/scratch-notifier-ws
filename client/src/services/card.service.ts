@@ -1,5 +1,9 @@
+import { socketService } from '../scripts';
+
+import InputService from './input.service';
+
 class CardService {
-  static updateCard(username: string, count: number, editName: (e: any) => void, deleteName: (e: any) => void): void {
+  static updateCard(username: string, count: number): void {
     if(document.getElementById(username + '-card')) {
       document.getElementById(username + '-count').innerText = count.toString();
     } else {
@@ -28,14 +32,22 @@ class CardService {
           const edit = document.createElement('button');
           edit.classList.add('uk-button', 'uk-button-primary');
           edit.innerText = 'Edit Username';
-          edit.addEventListener('click', editName);
+          edit.addEventListener('click', () => {
+            InputService.updateUsername(username, (oldUsername, newUsername) => {
+              socketService.editNotifier(oldUsername, newUsername);
+            });
+          });
           buttons.appendChild(edit);
           console.log(buttons);
           // Delete Username Button
           const deleteButton = document.createElement('button');
           deleteButton.classList.add('uk-button', 'uk-button-danger');
           deleteButton.innerText = 'Delete Username';
-          deleteButton.addEventListener('click', deleteName);
+          deleteButton.addEventListener('click', () => {
+            InputService.deleteUsername(username, (username) => {
+              socketService.deleteNotifier(username);
+            })
+          });
           buttons.appendChild(deleteButton);
           console.log(buttons)
       // Add Card to List
