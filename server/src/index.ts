@@ -6,7 +6,7 @@ import 'dotenv/config';
 const app = express();
 
 // Use Express WS
-expressWS(app);
+export const wsInstance = expressWS(app);
 
 import wsHandler from './controllers/ws';
 //@ts-ignore

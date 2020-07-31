@@ -16,8 +16,14 @@ export let socketService: SocketService;
 // Init WebSocket
 const socket = new WebSocket(`${SERVER_URL}/ws`);
 socket.onopen = () => {
-  socket.send("My Body is Ready")
   socketService = new SocketService(socket);
+}
+socket.onclose = () => {
+  UIkit.notification({
+    message: 'The Connection has Been Lost. Please Refresh the Page or Try Again Later',
+    status: 'danger',
+    timeout: 20000,
+  });
 }
 socket.onerror = () => {
   UIkit.notification({

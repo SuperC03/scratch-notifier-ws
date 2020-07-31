@@ -8,6 +8,7 @@ node_modules/
 server/dist/
 # Common Build
 common/dist/
+common/*.js
 # Client Build
 client/dist/
 

@@ -1,4 +1,4 @@
-import UIKit, { UIkit } from 'uikit';
+import UIKit from 'uikit';
 
 import { ERequestCode, EResponseCode, TRequest, TResponse } from '../../../common/';
 
@@ -48,7 +48,7 @@ class SocketService {
           StorageService.addUsername(res.username);
           break;
         case EResponseCode.CreateFailure:
-          UIkit.notification({
+          UIKit.notification({
             status: 'danger',
             message: res.msg
           });
@@ -59,7 +59,7 @@ class SocketService {
           StorageService.addUsername(res.username);
           break;
         case EResponseCode.UpdateFailure:
-          UIkit.notification({
+          UIKit.notification({
             status: 'danger',
             message: res.msg
           });
@@ -72,7 +72,7 @@ class SocketService {
           StorageService.editUsername(res.oldUsername, res.newUsername);
           break;
         case EResponseCode.EditFailure:
-          UIkit.notification({
+          UIKit.notification({
             status: 'danger',
             message: res.msg
           });
@@ -82,13 +82,13 @@ class SocketService {
           StorageService.removeUsername(res.username);
           break;
         case EResponseCode.DeleteFailure:
-          UIkit.notification({
+          UIKit.notification({
             status: 'danger',
             message: res.msg
           });
           break;
         default:
-          UIkit.notification({
+          UIKit.notification({
             status: 'danger',
             message: 'I have no idea what\'s happening? Refresh Maybe ¯\_(ツ)_/¯'
           });

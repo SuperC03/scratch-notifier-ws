@@ -14,6 +14,7 @@
     "dev:client": "cd ./client && webpack-dev-server --config webpack.development.js --port 8081",
     "build:server": "cd ./server && tsc -b",
     "build:client": "cd ./client && webpack --config webpack.production.js",
+    "build:common": "cd ./common && tsc index.ts",
     "start": "node ./server/dist/index.js"
   },
   "dependencies": {
