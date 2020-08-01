@@ -41,7 +41,6 @@ class SocketService {
     // @ts-ignore
     this.socket.onmessage = ({ data }) => {
       const res: TResponse = JSON.parse(data);
-      console.log(res);
       switch (res.code) {
         case EResponseCode.CreateNotifier:
           CardService.updateCard(res.username, res.count);

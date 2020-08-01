@@ -49,7 +49,6 @@ class CardService {
             })
           });
           buttons.appendChild(deleteButton);
-          console.log(buttons)
       // Add Card to List
       const cards = document.getElementById('cards');
       // Extract Add Username Card

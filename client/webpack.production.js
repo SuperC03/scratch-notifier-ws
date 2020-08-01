@@ -55,7 +55,7 @@ module.exports = {
   },
   plugins: [
     new webpack.DefinePlugin({
-      SERVER_URL: JSON.stringify(process.env.SERVER_URL),
+      SERVER_URL: JSON.stringify(process.env.SERVER_URL ? process.env.SERVER_URL : 'wss://api.notifier.thecolin.co'),
     }),
     new HtmlWebpackPlugin({
       template: './src/index.html',

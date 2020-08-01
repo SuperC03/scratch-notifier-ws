@@ -11,10 +11,11 @@ COPY yarn.lock ./
 USER node
 
 RUN yarn
-RUN yarn build:common
-RUN yarn build:sever
 
 COPY --chown=node:node . .
+
+RUN yarn build:common
+RUN yarn build:sever
 
 EXPOSE 8080
 
