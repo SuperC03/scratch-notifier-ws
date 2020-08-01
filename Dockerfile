@@ -11,7 +11,7 @@ COPY yarn.lock ./
 USER node
 
 RUN yarn
-RUN yarn build:client
+RUN yarn build:common
 RUN yarn build:sever
 
 COPY --chown=node:node . .

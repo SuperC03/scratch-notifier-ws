@@ -12,6 +12,9 @@ import wsHandler from './controllers/ws';
 //@ts-ignore
 app.ws('/ws', wsHandler);
 
+// Start Queue Loop
+import './utils/loop';
+
 // Extract Port
 const PORT: number = +process.env.PORT | 8080;
 

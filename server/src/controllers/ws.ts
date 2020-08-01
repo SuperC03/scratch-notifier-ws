@@ -1,6 +1,6 @@
 import { WebsocketRequestHandler } from 'express-ws';
 
-import { TResponse, EResponseCode, TRequest, ERequestCode } from '../../../common';
+import { TResponse, EResponseCode, TRequest, ERequestCode } from '../../../common/index';
 import INotifier from '../types/notifier.interface';
 import IWebSocket from '../types/websocket.interface';
 import { wsInstance } from '../index';
@@ -35,7 +35,6 @@ const wsHandler: WebsocketRequestHandler = (ws: IWebSocket, _) => {
         } else {
           notifiers.push(notifier);
         }
-        console.table(notifiers);
         break;
       }
       case ERequestCode.EditNotifier: {
@@ -73,9 +72,12 @@ const wsHandler: WebsocketRequestHandler = (ws: IWebSocket, _) => {
       }
     }
   });
+  ws.on('close', () => {
+    notifiers = notifiers.filter(n => n.id !== ws.id);
+  });
 }
 
 // Queue Array
-let notifiers: Array<INotifier> = [];
+export let notifiers: Array<INotifier> = [];
 
 export default wsHandler;
